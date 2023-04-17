@@ -1,0 +1,40 @@
+package utils;
+
+public class EndPointBuilder {
+
+    private String endPoint;
+    private static final PropertyManager env = EnvConfig.getEnvInstance();
+
+    public EndPointBuilder() {
+        this.endPoint = env.getPropertyValue("service.library");
+    }
+
+    public EndPointBuilder pathParameter(String param) {
+        this.endPoint += "/" + param;
+        return this;
+    }
+
+    public EndPointBuilder pathParameter(int param) {
+        return this.pathParameter(String.valueOf(param));
+    }
+
+    public EndPointBuilder queryParam(String param, String value) {
+        String delimiter;
+        if (this.endPoint.contains("?")) delimiter = "&";
+        else delimiter = "?";
+        this.endPoint += delimiter + param + "=" + value;
+        return this;
+    }
+
+    public EndPointBuilder queryParam(String param, int value) {
+        return this.queryParam(param, String.valueOf(value));
+    }
+
+    public EndPointBuilder queryParam(String param, boolean value) {
+        return this.queryParam(param, String.valueOf(value));
+    }
+
+    public String build() {
+        return this.endPoint;
+    }
+}
