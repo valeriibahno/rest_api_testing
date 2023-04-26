@@ -17,6 +17,12 @@ public class BookValidator {
         this.response = response;
     }
 
+    public BookValidator verifyBookExists(Book expectedBook) {
+        Book actualBook = BookValidator.parser.getAsBookClass(this.response);
+        Assert.assertEquals(actualBook, expectedBook, String.format("Book is unexpected:\n%s - actual\n%s - expected\n", actualBook, expectedBook));
+        return this;
+    }
+
     public BookValidator verifyBookName(String expectedNameBook) {
         String actualBookName = BookValidator.parser.getAsBookClass(this.response).bookName;
         Assert.assertEquals(actualBookName, expectedNameBook, String.format("Book name is unexpected:\n%s - actual\n%s - expected\n", actualBookName, expectedNameBook));
@@ -30,15 +36,27 @@ public class BookValidator {
         return this;
     }
 
-    public BookValidator verifyCountBooksNotNull() {
+    public BookValidator verifyBooksNotEmpty() {
         List<Book> books = BookValidator.parser.getAsBookClassArray(this.response);
         Assert.assertTrue(books.size() > 0, "List of books is empty");
         return this;
     }
 
-    public BookValidator verifyNameBookExistsInListBooks(String nameBook) {
+    public BookValidator verifyBookNamesIncludeText(String nameBook) {
         List<Book> books = BookValidator.parser.getAsBookClassArray(this.response);
-        Assert.assertTrue(books.stream().allMatch(x -> x.getBookName().contains(nameBook)), String.format("Name of books don't contain %s", nameBook));
+        Assert.assertTrue(books.stream().allMatch(x -> x.getBookName().contains(nameBook)), String.format("Name of books doesn't contain %s", nameBook));
+        return this;
+    }
+
+    public BookValidator verifyAnyBookNamesIncludeText(String nameBook) {
+        List<Book> books = BookValidator.parser.getAsBookClassArray(this.response);
+        Assert.assertTrue(books.stream().anyMatch(x -> x.getBookName().contains(nameBook)), String.format("Name of any books doesn't contain %s", nameBook));
+        return this;
+    }
+
+    public BookValidator verifyBiggerListBooksContainsLessListBooks(List<Book> biggerListBooks) {
+        List<Book> books = BookValidator.parser.getAsBookClassArray(this.response);
+        Assert.assertTrue(biggerListBooks.containsAll(books), String.format("List of books doesn't contain %s", biggerListBooks));
         return this;
     }
 }

@@ -34,11 +34,11 @@ public class RequestClient {
         return RequestClient.sendRequest(method, endPoint, null);
     }
 
-    private static Response sendRequest(Method method, String endPoint, Book body) {
+    private static Response sendRequest(Method method, String endPoint, Object object) {
         String url = env.getPropertyValue("service.host") + endPoint;
         RequestSpecification spec = given().auth().preemptive().basic("admin", "password").filter(new AllureRestAssured());
-        if(body != null) {
-            spec.contentType("application/json").body(body);
+        if(object != null) {
+            spec.contentType("application/json").body(object);
         }
         Response response = spec.request(method, url);
         response.then().log().all();

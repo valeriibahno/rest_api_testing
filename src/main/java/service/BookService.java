@@ -8,49 +8,20 @@ import utils.EndPointBuilder;
 
 public class BookService {
 
-    public Response getBook(QueryOptions options) {
+    public Response getBooks(QueryOptions options) {
         EndPointBuilder endPoint = new EndPointBuilder().pathParameter("books");
-
-        if(options.orderType != null) {
-            endPoint.queryParam("orderType", options.orderType);
-        }
-        endPoint
-                .queryParam("page", options.page)
-                .queryParam("pagination", options.pagination)
-                .queryParam("size", options.size);
-        if(options.sortBy != null) {
-            endPoint.queryParam("sortBy", options.sortBy);
-        }
+        setUpQueryOptions(options, endPoint);
         return RequestClient.get(endPoint.build());
     }
 
     public Response getBookByGenreId(QueryOptions options, int idGenre) {
         EndPointBuilder endPoint = new EndPointBuilder().pathParameter("genre").pathParameter(idGenre).pathParameter("books");
-        if(options.orderType != null) {
-            endPoint.queryParam("orderType", options.orderType);
-        }
-        endPoint
-                .queryParam("page", options.page)
-                .queryParam("pagination", options.pagination)
-                .queryParam("size", options.size);
-        if(options.sortBy != null) {
-            endPoint.queryParam("sortBy", options.sortBy);
-        }
+        setUpQueryOptions(options, endPoint);
         return RequestClient.get(endPoint.build());
     }
 
-    public Response getBookByPartName(QueryOptions options, String partName) {
+    public Response getBooksByPartName(String partName) {
         EndPointBuilder endPoint = new EndPointBuilder().pathParameter("books").pathParameter("search").queryParam("query", partName);
-        if(options.orderType != null) {
-            endPoint.queryParam("orderType", options.orderType);
-        }
-        endPoint
-                .queryParam("page", options.page)
-                .queryParam("pagination", options.pagination)
-                .queryParam("size", options.size);
-        if(options.sortBy != null) {
-            endPoint.queryParam("sortBy", options.sortBy);
-        }
         return RequestClient.get(endPoint.build());
     }
 
@@ -59,15 +30,24 @@ public class BookService {
         return RequestClient.get(endPoint.build());
     }
 
-    public Response getBookByAuthorId(QueryOptions options,int authorId) {
+    public Response getBookByAuthorId(QueryOptions options, int authorId) {
         EndPointBuilder endPoint = new EndPointBuilder().pathParameter("author").pathParameter(authorId).pathParameter("books");
+        setUpQueryOptions(options, endPoint);
+        return RequestClient.get(endPoint.build());
+    }
+
+    private EndPointBuilder setUpQueryOptions(QueryOptions options, EndPointBuilder endPoint) {
         if(options.orderType != null) {
             endPoint.queryParam("orderType", options.orderType);
         }
+        endPoint
+                .queryParam("page", options.page)
+                .queryParam("pagination", options.pagination)
+                .queryParam("size", options.size);
         if(options.sortBy != null) {
             endPoint.queryParam("sortBy", options.sortBy);
         }
-        return RequestClient.get(endPoint.build());
+        return endPoint;
     }
 
     public Response createBook(Book book, int authorId, int genreId) {

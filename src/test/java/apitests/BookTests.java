@@ -32,13 +32,14 @@ public class BookTests {
     private final String bookDescriptionRandom = "Description about " + faker.book().title() + " " +
                                     faker.book().author() + " " + faker.book().genre();
     private final String bookNameNewUpdate = faker.book().title() + faker.book().publisher();
+    private Book createdBook;
     private int idCreatedBook;
 
     @Test(priority = 1)
     @Description("Create new Book")
     public void verifyCreatedBook() {
 
-        Book createdBook = Book.builder()
+        createdBook = Book.builder()
                 .bookName(bookNameNew)
                 .bookDescription(bookDescriptionRandom)
                 .bookLanguage(faker.nation().language().toLowerCase())
@@ -56,8 +57,12 @@ public class BookTests {
         Response response = bookService.createBook(createdBook, authorId, genreId);
         idCreatedBook = response.body().as(Book.class).getBookId();
 
+        createdBook.setBookId(idCreatedBook);
+
         new ResponseValidator(response).verifyStatusCode(HttpStatus.SC_CREATED);
-        new BookValidator(response).verifyBookName(bookNameNew);
+        new BookValidator(response)
+                .verifyBookExists(createdBook)
+                .verifyBookName(bookNameNew);
     }
 
     @Test(priority = 2)
@@ -65,31 +70,20 @@ public class BookTests {
     public void verifyGetBookById() {
         Response response = bookService.getBookId(idCreatedBook);
         new ResponseValidator(response).verifyStatusCode(HttpStatus.SC_OK);
-        new BookValidator(response).verifyBookName(bookNameNew);
+        new BookValidator(response)
+                .verifyBookExists(createdBook)
+                .verifyBookName(bookNameNew);
     }
 
     @Test(priority = 3)
     @Description("Update existed book")
     public void verifyUpdateBook() {
-
-        Book updateddBook = Book.builder()
-                .bookName(bookNameNewUpdate)
-                .bookDescription(bookDescriptionRandom)
-                .bookLanguage(faker.nation().language().toLowerCase())
-                .additional(Additional.builder()
-                        .pagesCount(faker.number().numberBetween(100, 300))
-                        .size(Size.builder()
-                                .height(faker.number().randomDouble(1, 1, 50))
-                                .width(faker.number().randomDouble(1, 1, 50))
-                                .length(faker.number().randomDouble(1, 1, 50))
-                                .build())
-                        .build())
-                .publicationYear(faker.number().numberBetween(2010, 2020))
-                .build();
-
-        Response response = bookService.updateBook(updateddBook, idCreatedBook);
+        createdBook.setBookName(bookNameNewUpdate);
+        Response response = bookService.updateBook(createdBook, idCreatedBook);
         new ResponseValidator(response).verifyStatusCode(HttpStatus.SC_OK);
-        new BookValidator(response).verifyBookName(bookNameNewUpdate);
+        new BookValidator(response)
+                .verifyBookExists(createdBook)
+                .verifyBookName(bookNameNewUpdate);
     }
 
     @Test(priority = 4)
@@ -98,28 +92,34 @@ public class BookTests {
         QueryOptions options = new QueryOptions();
         options.setSortBy("bookId");
         Response response = bookService.getBookByGenreId(options, genreId);
-
         new ResponseValidator(response).verifyStatusCode(HttpStatus.SC_OK);
-        new BookValidator(response).verifyCountBooksNotNull();
+        new BookValidator(response)
+                .verifyBooksNotEmpty()
+                .verifyAnyBookNamesIncludeText(bookNameNewUpdate);
     }
 
     @Test(priority = 5)
     @Description("Get Books with pagination and sorting")
     public void verifyGetBooksByList() {
-        int sizeList = 5;
+        int sizeList5 = 5;
+        int sizeList10 = 10;
         int defaultPage = 1;
-        Response response = bookService.getBook(new QueryOptions(defaultPage, true, sizeList));
-        new ResponseValidator(response).verifyStatusCode(HttpStatus.SC_OK);
-        new BookValidator(response).verifyCountBooks(sizeList);
+        Response response10 = bookService.getBooks(new QueryOptions(defaultPage, true, sizeList10));
+        List<Book> listBooks10 = Arrays.asList(response10.getBody().as(Book[].class));
+        Response response5 = bookService.getBooks(new QueryOptions(defaultPage, true, sizeList5));
+        new ResponseValidator(response5).verifyStatusCode(HttpStatus.SC_OK);
+        new BookValidator(response5)
+                .verifyCountBooks(sizeList5)
+                .verifyBiggerListBooksContainsLessListBooks(listBooks10);
     }
 
     @Test(priority = 6)
     @Description("Search for Books by name, return first 5 the most relevant results")
     public void verifyGetBookBySearch() {
         String partNameBook = "Distinctio";
-        Response response = bookService.getBookByPartName(new QueryOptions(), partNameBook);
+        Response response = bookService.getBooksByPartName(partNameBook);
         new ResponseValidator(response).verifyStatusCode(HttpStatus.SC_OK);
-        new BookValidator(response).verifyNameBookExistsInListBooks(partNameBook);
+        new BookValidator(response).verifyBookNamesIncludeText(partNameBook);
     }
 
     @Test(priority = 7)
@@ -128,7 +128,9 @@ public class BookTests {
         String parameter = "defaultValue";
         List<String> expectedListDefaultValue = Arrays.asList("bookId", "bookName", "pagesCount", "volume", "square", "publicationYear");
         Response response = bookService.getSorters();
-        new ResponseValidator(response).verifyStatusCode(HttpStatus.SC_OK).verifyListByParameterExists(parameter, expectedListDefaultValue);
+        new ResponseValidator(response)
+                .verifyStatusCode(HttpStatus.SC_OK)
+                .verifyListByParameterExists(parameter, expectedListDefaultValue);
     }
 
     @Test(priority = 8)
@@ -136,7 +138,9 @@ public class BookTests {
     public void verifyGetBookByAuthorIdAndGenreId() {
         Response response = bookService.getBookByAuthorIdAndGenreId(authorId, genreId);
         new ResponseValidator(response).verifyStatusCode(HttpStatus.SC_OK);
-        new BookValidator(response).verifyNameBookExistsInListBooks(bookNameNewUpdate);
+        new BookValidator(response)
+                .verifyAnyBookNamesIncludeText(bookNameNewUpdate)
+                .verifyBooksNotEmpty();
     }
 
     @Test(priority = 9)
@@ -144,7 +148,9 @@ public class BookTests {
     public void verifyGetBookByAuthorId() {
         Response response = bookService.getBookByAuthorId(new QueryOptions(), authorId);
         new ResponseValidator(response).verifyStatusCode(HttpStatus.SC_OK);
-        new BookValidator(response).verifyNameBookExistsInListBooks(bookNameNewUpdate);
+        new BookValidator(response)
+                .verifyAnyBookNamesIncludeText(bookNameNewUpdate)
+                .verifyBooksNotEmpty();
     }
 
     @Test(priority = 10)
@@ -164,6 +170,7 @@ public class BookTests {
     public void verifyCreateIncorrectBook() {
         Response response = bookService.createBook(Book.builder().build(), authorId, genreId);
         new ResponseValidator(response)
-                .verifyStatusCode(HttpStatus.SC_BAD_REQUEST).verifyErrorMessage("Value 'bookName' is required!");
+                .verifyStatusCode(HttpStatus.SC_BAD_REQUEST)
+                .verifyErrorMessage("Value 'bookName' is required!");
     }
 }
