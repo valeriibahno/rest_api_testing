@@ -76,11 +76,11 @@ public class BookTests {
     @Description("Update existed book")
     public void verifyUpdateBook() {
         Response responseBook = bookService.getBookId(idCreatedBook);
-        createdBook = new ConvertResponseToModel().getAsBookClass(responseBook);
-        createdBook.setBookName(bookNameNewUpdate);
-        Response response = bookService.updateBook(createdBook, idCreatedBook);
+        Book updatedBook = new ConvertResponseToModel().getAsBookClass(responseBook);
+        updatedBook.setBookName(bookNameNewUpdate);
+        Response response = bookService.updateBook(updatedBook, idCreatedBook);
         new ResponseValidator(response).verifyStatusCode(HttpStatus.SC_OK);
-        new BookValidator(response).verifyBook(createdBook);
+        new BookValidator(response).verifyBook(updatedBook);
     }
 
     @Test(priority = 4)
