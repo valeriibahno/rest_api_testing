@@ -4,7 +4,6 @@ import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import models.book.Book;
 import utils.EnvConfig;
 import utils.PropertyManager;
 
@@ -18,11 +17,11 @@ public class RequestClient {
         return RequestClient.sendRequest(Method.GET, endPoint);
     }
 
-    public static Response post(String endPoint, Book body) {
+    public static Response post(String endPoint, Object body) {
         return RequestClient.sendRequest(Method.POST, endPoint, body);
     }
 
-    public static Response put(String endPoint, Book body) {
+    public static Response put(String endPoint, Object body) {
         return RequestClient.sendRequest(Method.PUT, endPoint, body);
     }
 
@@ -34,11 +33,11 @@ public class RequestClient {
         return RequestClient.sendRequest(method, endPoint, null);
     }
 
-    private static Response sendRequest(Method method, String endPoint, Object object) {
+    private static Response sendRequest(Method method, String endPoint, Object body) {
         String url = env.getPropertyValue("service.host") + endPoint;
         RequestSpecification spec = given().auth().preemptive().basic("admin", "password").filter(new AllureRestAssured());
-        if(object != null) {
-            spec.contentType("application/json").body(object);
+        if(body != null) {
+            spec.contentType("application/json").body(body);
         }
         Response response = spec.request(method, url);
         response.then().log().all();

@@ -17,15 +17,9 @@ public class BookValidator {
         this.response = response;
     }
 
-    public BookValidator verifyBookExists(Book expectedBook) {
+    public BookValidator verifyBook(Book expectedBook) {
         Book actualBook = BookValidator.parser.getAsBookClass(this.response);
         Assert.assertEquals(actualBook, expectedBook, String.format("Book is unexpected:\n%s - actual\n%s - expected\n", actualBook, expectedBook));
-        return this;
-    }
-
-    public BookValidator verifyBookName(String expectedNameBook) {
-        String actualBookName = BookValidator.parser.getAsBookClass(this.response).bookName;
-        Assert.assertEquals(actualBookName, expectedNameBook, String.format("Book name is unexpected:\n%s - actual\n%s - expected\n", actualBookName, expectedNameBook));
         return this;
     }
 
