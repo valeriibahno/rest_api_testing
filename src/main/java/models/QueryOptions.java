@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import utils.EndPointBuilder;
 
 @AllArgsConstructor
 @Builder
@@ -29,5 +30,19 @@ public class QueryOptions {
         this.page = page;
         this.pagination = pagination;
         this.size = size;
+    }
+
+    public static EndPointBuilder setUpQueryOptions(QueryOptions options, EndPointBuilder endPoint) {
+        if(options.orderType != null) {
+            endPoint.queryParam("orderType", options.orderType);
+        }
+        endPoint
+                .queryParam("page", options.page)
+                .queryParam("pagination", options.pagination)
+                .queryParam("size", options.size);
+        if(options.sortBy != null) {
+            endPoint.queryParam("sortBy", options.sortBy);
+        }
+        return endPoint;
     }
 }

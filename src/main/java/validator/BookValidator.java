@@ -48,9 +48,8 @@ public class BookValidator {
         return this;
     }
 
-    public BookValidator verifyBiggerListBooksContainsLessListBooks(List<Book> biggerListBooks) {
-        List<Book> books = BookValidator.parser.getAsBookClassArray(this.response);
-        Assert.assertTrue(biggerListBooks.containsAll(books), String.format("List of books doesn't contain %s", biggerListBooks));
+    public BookValidator verifyTwoListBooksEqual(List<Book> listBooks1, List<Book> listBooks2) {
+        Assert.assertEquals(listBooks1, listBooks2, "Two lists of books doesn't equal");
         return this;
     }
 }

@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eaeb95e8-603e-49d7-9b78-e85bf3f76257" name="Changes" comment="Fixed according to comments">
-      <change afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dailyLog.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/QueryOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/QueryOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/validator/BookValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validator/BookValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/apitests/BookTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/apitests/BookTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -240,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682754274705</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fixed according to comments">
+      <created>1682754399582</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1682754399582</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

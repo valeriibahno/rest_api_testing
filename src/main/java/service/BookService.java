@@ -10,13 +10,13 @@ public class BookService {
 
     public Response getBooks(QueryOptions options) {
         EndPointBuilder endPoint = new EndPointBuilder().pathParameter("books");
-        setUpQueryOptions(options, endPoint);
+        QueryOptions.setUpQueryOptions(options, endPoint);
         return RequestClient.get(endPoint.build());
     }
 
     public Response getBooksByGenreId(QueryOptions options, int idGenre) {
         EndPointBuilder endPoint = new EndPointBuilder().pathParameter("genre").pathParameter(idGenre).pathParameter("books");
-        setUpQueryOptions(options, endPoint);
+        QueryOptions.setUpQueryOptions(options, endPoint);
         return RequestClient.get(endPoint.build());
     }
 
@@ -32,22 +32,8 @@ public class BookService {
 
     public Response getBooksByAuthorId(QueryOptions options, int authorId) {
         EndPointBuilder endPoint = new EndPointBuilder().pathParameter("author").pathParameter(authorId).pathParameter("books");
-        setUpQueryOptions(options, endPoint);
+        QueryOptions.setUpQueryOptions(options, endPoint);
         return RequestClient.get(endPoint.build());
-    }
-
-    private EndPointBuilder setUpQueryOptions(QueryOptions options, EndPointBuilder endPoint) {
-        if(options.orderType != null) {
-            endPoint.queryParam("orderType", options.orderType);
-        }
-        endPoint
-                .queryParam("page", options.page)
-                .queryParam("pagination", options.pagination)
-                .queryParam("size", options.size);
-        if(options.sortBy != null) {
-            endPoint.queryParam("sortBy", options.sortBy);
-        }
-        return endPoint;
     }
 
     public Response createBook(Book book, int authorId, int genreId) {
