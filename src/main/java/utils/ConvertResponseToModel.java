@@ -3,6 +3,7 @@ package utils;
 import io.restassured.response.Response;
 import models.ResponseError;
 import models.book.Book;
+import models.genre.Genre;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +16,10 @@ public class ConvertResponseToModel {
 
     public Book getAsBookClass(Response response) {
         return response.body().as(Book.class);
+    }
+
+    public Genre getAsGenreClass(Response response) {
+        return response.body().as(Genre.class);
     }
 
     public ResponseError getError(Response response) {

@@ -9,9 +9,11 @@ import models.QueryOptions;
 import models.book.Additional;
 import models.book.Book;
 import models.book.Size;
+import models.genre.Genre;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
 import service.BookService;
+import service.GenreService;
 import utils.ConvertResponseToModel;
 import validator.BookValidator;
 import validator.ResponseValidator;
@@ -25,6 +27,7 @@ public class BookTests {
 
     private final Faker faker = new Faker();
     private final BookService bookService = new BookService();
+    private final GenreService genreService = new GenreService();
 
     private final int authorId = 1;
     private final int genreId = 3;
@@ -89,12 +92,16 @@ public class BookTests {
 
     @Test(priority = 4)
     @Description("Get Books in special Genre")
-    public void verifyGetBookByGenreId() {
+    public void verifyGetBooksByGenreId() {
 
         QueryOptions options = new QueryOptions();
         options.setSortBy("bookId");
 
-        Response response = bookService.getBooksByGenreId(options, genreId);
+        Response responseGenre = genreService.getGenreByBookId(idCreatedBook);
+        Genre genre = responseGenre.getBody().as(Genre.class);
+        int genreIdCreatedBook = genre.getGenreId();
+
+        Response response = bookService.getBooksByGenreId(options, genreIdCreatedBook);
 
         new ResponseValidator(response).verifyStatusCode(HttpStatus.SC_OK);
         new BookValidator(response)
@@ -114,17 +121,16 @@ public class BookTests {
         List<Book> listBooks5From10 = Arrays.asList(response10.getBody().as(Book[].class)).subList(0,5);
 
         Response response5 = bookService.getBooks(new QueryOptions(defaultPage, true, sizeList5));
-        List<Book> listBooks5 = Arrays.asList(response5.getBody().as(Book[].class));
 
         new ResponseValidator(response5).verifyStatusCode(HttpStatus.SC_OK);
         new BookValidator(response5)
                 .verifyCountBooks(sizeList5)
-                .verifyTwoListBooksEqual(listBooks5From10, listBooks5);
+                .verifyBooksListEquals(listBooks5From10);
     }
 
     @Test(priority = 6)
     @Description("Search for Books by name, return first 5 the most relevant results")
-    public void verifyGetBookBySearch() {
+    public void verifyGetBooksBySearch() {
 
         String partNameBook = "Distinctio";
 
@@ -150,7 +156,7 @@ public class BookTests {
 
     @Test(priority = 8)
     @Description("Get Books of special Author in special Genre")
-    public void verifyGetBookByAuthorIdAndGenreId() {
+    public void verifyGetBooksByAuthorIdAndGenreId() {
 
         Response response = bookService.getBooksByAuthorIdAndGenreId(authorId, genreId);
 
@@ -162,7 +168,7 @@ public class BookTests {
 
     @Test(priority = 9)
     @Description("Get Books of special Author")
-    public void verifyGetBookByAuthorId() {
+    public void verifyGetBooksByAuthorId() {
 
         Response response = bookService.getBooksByAuthorId(new QueryOptions(), authorId);
 

@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eaeb95e8-603e-49d7-9b78-e85bf3f76257" name="Changes" comment="Fixed according to comments">
+    <list default="true" id="eaeb95e8-603e-49d7-9b78-e85bf3f76257" name="Changes" comment="Fixed according to comments - added new method verifyTwoListBooksEqual.&#10;Moved method setUpQueryOptions from class BookService to class QueryOptions.">
+      <change afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dailyLog.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/genre/Genre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/GenreService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/QueryOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/QueryOptions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ConvertResponseToModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ConvertResponseToModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/EndPointBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/EndPointBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/validator/BookValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validator/BookValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/apitests/BookTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/apitests/BookTests.java" afterDir="false" />
     </list>
@@ -77,6 +83,7 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="service" />
       <recent name="utils" />
     </key>
   </component>
@@ -145,7 +152,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookTests.verifyGetBookBySearch" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="BookTests.verifyGetBooksByGenreId" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="rest_api_testing" />
       <extension name="coverage">
         <pattern>
@@ -155,7 +162,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="apitests" />
       <option name="MAIN_CLASS_NAME" value="apitests.BookTests" />
-      <option name="METHOD_NAME" value="verifyGetBookBySearch" />
+      <option name="METHOD_NAME" value="verifyGetBooksByGenreId" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -184,10 +191,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="TestNG.BookTests" />
+        <item itemvalue="TestNG.BookTests.verifyGetBooksByGenreId" />
         <item itemvalue="TestNG.BookTests.verifyGetBooksByList" />
         <item itemvalue="TestNG.BookTests.verifyGetBookByAuthorId" />
         <item itemvalue="TestNG.BookTests.verifyGetBookByGenreId" />
-        <item itemvalue="TestNG.BookTests.verifyGetBookBySearch" />
       </list>
     </recent_temporary>
   </component>
@@ -249,8 +256,26 @@
       <option name="project" value="LOCAL" />
       <updated>1682754399582</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fixed according to comments - added new method verifyTwoListBooksEqual.&#10;Moved method setUpQueryOptions from class BookService to class QueryOptions.">
+      <created>1683136230564</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1683136230564</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -258,6 +283,7 @@
     <MESSAGE value="Finish rest assured project" />
     <MESSAGE value="Updated .gitignore" />
     <MESSAGE value="Fixed according to comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed according to comments" />
+    <MESSAGE value="Fixed according to comments - added new method verifyTwoListBooksEqual.&#10;Moved method setUpQueryOptions from class BookService to class QueryOptions." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed according to comments - added new method verifyTwoListBooksEqual.&#10;Moved method setUpQueryOptions from class BookService to class QueryOptions." />
   </component>
 </project>

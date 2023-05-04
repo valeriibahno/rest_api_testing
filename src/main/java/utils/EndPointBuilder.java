@@ -1,5 +1,7 @@
 package utils;
 
+import models.QueryOptions;
+
 public class EndPointBuilder {
 
     private String endPoint;
@@ -32,6 +34,20 @@ public class EndPointBuilder {
 
     public EndPointBuilder queryParam(String param, boolean value) {
         return this.queryParam(param, String.valueOf(value));
+    }
+
+    public EndPointBuilder applyQueryOptions(QueryOptions options) {
+        if(options.orderType != null) {
+            this.queryParam("orderType", options.orderType);
+        }
+        this
+                .queryParam("page", options.page)
+                .queryParam("pagination", options.pagination)
+                .queryParam("size", options.size);
+        if(options.sortBy != null) {
+            this.queryParam("sortBy", options.sortBy);
+        }
+        return this;
     }
 
     public String build() {

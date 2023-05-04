@@ -48,8 +48,9 @@ public class BookValidator {
         return this;
     }
 
-    public BookValidator verifyTwoListBooksEqual(List<Book> listBooks1, List<Book> listBooks2) {
-        Assert.assertEquals(listBooks1, listBooks2, "Two lists of books doesn't equal");
+    public BookValidator verifyBooksListEquals(List<Book> expectedBooks) {
+        List<Book> actualBooks = BookValidator.parser.getAsBookClassArray(this.response);
+        Assert.assertEquals(expectedBooks, actualBooks, "Two lists of books doesn't equal");
         return this;
     }
 }

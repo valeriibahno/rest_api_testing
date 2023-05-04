@@ -9,14 +9,12 @@ import utils.EndPointBuilder;
 public class BookService {
 
     public Response getBooks(QueryOptions options) {
-        EndPointBuilder endPoint = new EndPointBuilder().pathParameter("books");
-        QueryOptions.setUpQueryOptions(options, endPoint);
+        EndPointBuilder endPoint = new EndPointBuilder().pathParameter("books").applyQueryOptions(options);
         return RequestClient.get(endPoint.build());
     }
 
     public Response getBooksByGenreId(QueryOptions options, int idGenre) {
-        EndPointBuilder endPoint = new EndPointBuilder().pathParameter("genre").pathParameter(idGenre).pathParameter("books");
-        QueryOptions.setUpQueryOptions(options, endPoint);
+        EndPointBuilder endPoint = new EndPointBuilder().pathParameter("genre").pathParameter(idGenre).pathParameter("books").applyQueryOptions(options);
         return RequestClient.get(endPoint.build());
     }
 
@@ -31,8 +29,7 @@ public class BookService {
     }
 
     public Response getBooksByAuthorId(QueryOptions options, int authorId) {
-        EndPointBuilder endPoint = new EndPointBuilder().pathParameter("author").pathParameter(authorId).pathParameter("books");
-        QueryOptions.setUpQueryOptions(options, endPoint);
+        EndPointBuilder endPoint = new EndPointBuilder().pathParameter("author").pathParameter(authorId).pathParameter("books").applyQueryOptions(options);
         return RequestClient.get(endPoint.build());
     }
 

@@ -31,18 +31,4 @@ public class QueryOptions {
         this.pagination = pagination;
         this.size = size;
     }
-
-    public static EndPointBuilder setUpQueryOptions(QueryOptions options, EndPointBuilder endPoint) {
-        if(options.orderType != null) {
-            endPoint.queryParam("orderType", options.orderType);
-        }
-        endPoint
-                .queryParam("page", options.page)
-                .queryParam("pagination", options.pagination)
-                .queryParam("size", options.size);
-        if(options.sortBy != null) {
-            endPoint.queryParam("sortBy", options.sortBy);
-        }
-        return endPoint;
-    }
 }
