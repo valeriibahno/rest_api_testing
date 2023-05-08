@@ -16,6 +16,7 @@ import service.BookService;
 import service.GenreService;
 import utils.ConvertResponseToModel;
 import validator.BookValidator;
+import validator.GenreValidator;
 import validator.ResponseValidator;
 
 import java.util.Arrays;
@@ -102,6 +103,12 @@ public class BookTests {
         int genreIdCreatedBook = genre.getGenreId();
 
         Response response = bookService.getBooksByGenreId(options, genreIdCreatedBook);
+        List<Book> listBooks = List.of(response.getBody().as(Book[].class));
+
+        for (Book book: listBooks) {
+            Response responseGenres = genreService.getGenreByBookId(book.getBookId());
+            new GenreValidator(responseGenres).verifyGenreExistsInResponse(genreIdCreatedBook);
+        }
 
         new ResponseValidator(response).verifyStatusCode(HttpStatus.SC_OK);
         new BookValidator(response)
