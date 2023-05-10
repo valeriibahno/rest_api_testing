@@ -60,7 +60,7 @@ public class BookTests {
                 .build();
 
         Response response = bookService.createBook(createdBook, authorId, genreId);
-        idCreatedBook = response.body().as(Book.class).getBookId();
+        idCreatedBook = new ConvertResponseToModel().getAsBookClass(response).getBookId();
 
         createdBook.setBookId(idCreatedBook);
 
@@ -99,18 +99,18 @@ public class BookTests {
         options.setSortBy("bookId");
 
         Response responseGenre = genreService.getGenreByBookId(idCreatedBook);
-        Genre genre = responseGenre.getBody().as(Genre.class);
+        Genre genre = new ConvertResponseToModel().getAsGenreClass(responseGenre);
         int genreIdCreatedBook = genre.getGenreId();
 
         Response response = bookService.getBooksByGenreId(options, genreIdCreatedBook);
-        List<Book> listBooks = List.of(response.getBody().as(Book[].class));
+        new ResponseValidator(response).verifyStatusCode(HttpStatus.SC_OK);
 
+        List<Book> listBooks = new ConvertResponseToModel().getAsBookClassArray(response);
         for (Book book: listBooks) {
             Response responseGenres = genreService.getGenreByBookId(book.getBookId());
             new GenreValidator(responseGenres).verifyGenreExistsInResponse(genreIdCreatedBook);
         }
 
-        new ResponseValidator(response).verifyStatusCode(HttpStatus.SC_OK);
         new BookValidator(response)
                 .verifyBooksNotEmpty()
                 .verifyAnyBookNamesIncludeText(bookNameNewUpdate);
@@ -125,7 +125,7 @@ public class BookTests {
         int defaultPage = 1;
 
         Response response10 = bookService.getBooks(new QueryOptions(defaultPage, true, sizeList10));
-        List<Book> listBooks5From10 = Arrays.asList(response10.getBody().as(Book[].class)).subList(0,5);
+        List<Book> listBooks5From10 = new ConvertResponseToModel().getAsBookClassArray(response10).subList(0,5);
 
         Response response5 = bookService.getBooks(new QueryOptions(defaultPage, true, sizeList5));
 

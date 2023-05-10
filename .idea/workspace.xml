@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eaeb95e8-603e-49d7-9b78-e85bf3f76257" name="Changes" comment="Fixed according to comments:&#10;- added GenreService and Genre classes,&#10;- moved setUpQueryOptions into EndPointBuilder">
-      <change afterPath="$PROJECT_DIR$/src/main/java/validator/GenreValidator.java" afterDir="false" />
+    <list default="true" id="eaeb95e8-603e-49d7-9b78-e85bf3f76257" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/validator/BookValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validator/BookValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/validator/GenreValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validator/GenreValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/apitests/BookTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/apitests/BookTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,6 +80,19 @@
     </key>
   </component>
   <component name="RunManager" selected="TestNG.BookTests">
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="apitests.Test" />
+      <module name="rest_api_testing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="apitests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -127,24 +139,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookTests.verifyGetBookByGenreId" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="rest_api_testing" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="apitests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="apitests" />
-      <option name="MAIN_CLASS_NAME" value="apitests.BookTests" />
-      <option name="METHOD_NAME" value="verifyGetBookByGenreId" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="BookTests.verifyGetBooksByGenreId" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="rest_api_testing" />
       <extension name="coverage">
@@ -184,10 +178,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="TestNG.BookTests" />
+        <item itemvalue="Application.Test" />
         <item itemvalue="TestNG.BookTests.verifyGetBooksByGenreId" />
         <item itemvalue="TestNG.BookTests.verifyGetBooksByList" />
         <item itemvalue="TestNG.BookTests.verifyGetBookByAuthorId" />
-        <item itemvalue="TestNG.BookTests.verifyGetBookByGenreId" />
       </list>
     </recent_temporary>
   </component>
@@ -263,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683197926620</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Fixed according to comments: fixed, and added GenreValidator with new method verifyGenreExistsInResponse">
+      <created>1683561045514</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1683561045514</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -285,16 +286,12 @@
     <MESSAGE value="Fixed according to comments" />
     <MESSAGE value="Fixed according to comments - added new method verifyTwoListBooksEqual.&#10;Moved method setUpQueryOptions from class BookService to class QueryOptions." />
     <MESSAGE value="Fixed according to comments:&#10;- added GenreService and Genre classes,&#10;- moved setUpQueryOptions into EndPointBuilder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed according to comments:&#10;- added GenreService and Genre classes,&#10;- moved setUpQueryOptions into EndPointBuilder" />
+    <MESSAGE value="Fixed according to comments: fixed, and added GenreValidator with new method verifyGenreExistsInResponse" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed according to comments: fixed, and added GenreValidator with new method verifyGenreExistsInResponse" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/apitests/BookTests.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/validator/GenreValidator.java</url>
           <line>20</line>
