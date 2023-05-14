@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eaeb95e8-603e-49d7-9b78-e85bf3f76257" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/AllureListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/EnvConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/PropertyManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/env.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/apiTests.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/env.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/validator/GenreValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validator/GenreValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/apitests/BookTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/apitests/BookTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +22,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -51,31 +47,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "D:/Personal_info/Cursor_TA_course/automation_repo/rest_api_testing/src/main/resources"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Personal_info/GitLab_projects/cicd-threadqa&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="models.book" />
+      <recent name="models.author" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Personal_info\Cursor_TA_course\automation_repo\rest_api_testing\src\main\resources" />
       <recent name="D:\Personal_info\Cursor_TA_course\automation_repo\rest_api_testing\src\main\java" />
       <recent name="D:\Personal_info\Cursor_TA_course\automation_repo\rest_api_testing\src\test\resources" />
       <recent name="D:\Personal_info\Cursor_TA_course\automation_repo\rest_api_testing\src\test" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="service" />
+      <recent name="utils" />
+    </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
+  <component name="RunManager" selected="TestNG.BookTests">
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="apitests.Test" />
       <module name="rest_api_testing" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="apitests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -94,9 +104,84 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BookTests" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="rest_api_testing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="apitests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="apitests" />
+      <option name="MAIN_CLASS_NAME" value="apitests.BookTests" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookTests.verifyGetBookByAuthorId" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="rest_api_testing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="apitests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="apitests" />
+      <option name="MAIN_CLASS_NAME" value="apitests.BookTests" />
+      <option name="METHOD_NAME" value="verifyGetBookByAuthorId" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookTests.verifyGetBooksByGenreId" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="rest_api_testing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="apitests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="apitests" />
+      <option name="MAIN_CLASS_NAME" value="apitests.BookTests" />
+      <option name="METHOD_NAME" value="verifyGetBooksByGenreId" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookTests.verifyGetBooksByList" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="rest_api_testing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="apitests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="apitests" />
+      <option name="MAIN_CLASS_NAME" value="apitests.BookTests" />
+      <option name="METHOD_NAME" value="verifyGetBooksByList" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="TestNG.BookTests" />
+        <item itemvalue="Application.Test" />
+        <item itemvalue="TestNG.BookTests.verifyGetBooksByGenreId" />
+        <item itemvalue="TestNG.BookTests.verifyGetBooksByList" />
+        <item itemvalue="TestNG.BookTests.verifyGetBookByAuthorId" />
       </list>
     </recent_temporary>
   </component>
@@ -109,9 +194,115 @@
       <option name="presentableId" value="Default" />
       <updated>1681469280176</updated>
     </task>
+    <task id="LOCAL-00001" summary="Base files">
+      <created>1681496383631</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1681496383631</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Finish rest assured project">
+      <created>1681736299500</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1681736299500</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Finish rest assured project">
+      <created>1681736321674</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1681736321674</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Updated .gitignore">
+      <created>1681736352455</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681736352455</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fixed according to comments">
+      <created>1682534601313</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1682534601313</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fixed according to comments">
+      <created>1682754274705</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1682754274705</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fixed according to comments">
+      <created>1682754399582</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1682754399582</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fixed according to comments - added new method verifyTwoListBooksEqual.&#10;Moved method setUpQueryOptions from class BookService to class QueryOptions.">
+      <created>1683136230564</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1683136230564</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fixed according to comments:&#10;- added GenreService and Genre classes,&#10;- moved setUpQueryOptions into EndPointBuilder">
+      <created>1683197926620</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1683197926620</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fixed according to comments: fixed, and added GenreValidator with new method verifyGenreExistsInResponse">
+      <created>1683561045514</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1683561045514</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Base files" />
+    <MESSAGE value="Finish rest assured project" />
+    <MESSAGE value="Updated .gitignore" />
+    <MESSAGE value="Fixed according to comments" />
+    <MESSAGE value="Fixed according to comments - added new method verifyTwoListBooksEqual.&#10;Moved method setUpQueryOptions from class BookService to class QueryOptions." />
+    <MESSAGE value="Fixed according to comments:&#10;- added GenreService and Genre classes,&#10;- moved setUpQueryOptions into EndPointBuilder" />
+    <MESSAGE value="Fixed according to comments: fixed, and added GenreValidator with new method verifyGenreExistsInResponse" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed according to comments: fixed, and added GenreValidator with new method verifyGenreExistsInResponse" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/validator/GenreValidator.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/validator/GenreValidator.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
